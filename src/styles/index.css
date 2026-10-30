@@ -1,0 +1,175 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/bricolage-grotesque';
+@import 'tailwindcss';
+
+/* Dark mode follows [data-theme="dark"] on <html> (set in Phase 1). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Raw tokens (PRD §2). Light is the primary theme. ---------- */
+:root {
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --surface-raised: #ffffff;
+  --fg: #171717;
+  --fg-muted: #666666;
+  --accent: #d9363e;
+  /* brand: buttons, icons, lines, decoration */
+  --accent-text: #c42f37;
+  /* small red text; >=4.5:1 on #fff and #f5f5f5 */
+  --border: #e3e3e3;
+  --status-ok: #1f9d55;
+  /* "Open to Work" indicator */
+
+  --shadow-card: 0 1px 2px rgb(23 23 23 / 0.04), 0 8px 24px -12px rgb(23 23 23 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(23 23 23 / 0.05), 0 16px 32px -14px rgb(23 23 23 / 0.16);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface-raised: #1a1a1a;
+  --fg: #f5f5f5;
+  --fg-muted: #a3a3a3;
+  --accent: #e5484d;
+  --accent-text: #ec5a5f;
+  /* >=4.5:1 on #111 and #1a1a1a */
+  --border: #303030;
+  --status-ok: #3ec97a;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.35), 0 16px 32px -14px rgb(0 0 0 / 0.6);
+
+  color-scheme: dark;
+}
+
+/* ---------- Tailwind utilities mapped to runtime tokens ---------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-border: var(--border);
+  --color-ok: var(--status-ok);
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    /* keeps section titles clear of the floating navbar */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    /* guards against horizontal overflow on mobile */
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+}
+
+/* ---------- Typography system ---------- */
+@layer components {
+  .heading-display {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl;
+  }
+
+  .heading-card {
+    @apply font-display text-lg font-semibold tracking-tight;
+  }
+
+  .body-text {
+    @apply font-sans text-sm leading-relaxed sm:text-base;
+  }
+
+  .eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.2em];
+  }
+}
+
+/* ---------- Subtle vertical float for About cards ---------- */
+@keyframes float-y {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(calc(var(--float-y, 6px) * -1))
+  }
+}
+
+.float-card {
+  animation: float-y var(--float-d, 4s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+.float-card:hover {
+  animation-play-state: paused;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Reduced motion: global safety net ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
