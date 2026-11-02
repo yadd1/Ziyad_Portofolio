@@ -70,8 +70,8 @@ The dashboard consists of three main pages:
     {
         id: 'project-2',
         title: {
-            id: 'Portfolio Website',
-            en: 'Portfolio Website',
+            id: 'Perancangan UI/UX Aplikasi Petshop',
+            en: 'Petshop App UI/UX Design',
         },
         summary: {
             id: 'PETDULI merupakan aplikasi mobile yang dirancang untuk memudahkan pemilik hewan peliharaan menemukan petshop terdekat, membeli kebutuhan hewan, serta mengakses layanan grooming, konsultasi, dan edukasi dalam satu platform.',
