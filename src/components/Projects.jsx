@@ -1,4 +1,4 @@
-
+import ReactMarkdown from 'react-markdown'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
@@ -182,21 +182,50 @@ function ProjectModal({ project, lang, onClose }) {
                 Project Overview
               </h3>
 
-              <p className="mt-3 whitespace-pre-line text-sm leading-7 text-fg-muted">
-                {project.details[lang]}
-              </p>
+              <div className="mt-3 text-sm leading-7 text-fg-muted sm:text-base">
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => (
+                      <p className="mb-4 last:mb-0">{children}</p>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="font-semibold text-fg">{children}</strong>
+                    ),
+                    em: ({ children }) => (
+                      <em className="italic text-fg-muted">{children}</em>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className="mb-4 ml-5 list-disc space-y-2 last:mb-0">
+                        {children}
+                      </ul>
+                    ),
+                    li: ({ children }) => (
+                      <li className="pl-1">{children}</li>
+                    ),
+                  }}
+                >
+                  {project.details[lang]}
+                </ReactMarkdown>
+              </div>
             </div>
 
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                Buka Proyek
-                <ExternalLink size={15} />
-              </a>
+            {project.links?.filter((link) => link.url)?.length > 0 && (
+              <div className="mt-7 flex flex-wrap gap-3">
+                {project.links
+                  .filter((link) => link.url)
+                  .map((link) => (
+                    <a
+                      key={`${link.label}-${link.url}`}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                    >
+                      {link.label}
+                      <ExternalLink size={15} />
+                    </a>
+                  ))}
+              </div>
             )}
           </div>
 
