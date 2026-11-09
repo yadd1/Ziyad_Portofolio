@@ -41,4 +41,18 @@ export const certificates = [
         image: '/img/Serti/DAMC.jpg',
         description: 'Berhasil menyelesaikan pelatihan Intro to Data Analytics dengan topik utama pengenalan Data Analytics.',
     },
+
+    {
+        id: 'certificate-5',
+        title: 'Short Class Power BI Dashboard Specialist',
+        issuer: 'Karirnex',
+        date: 'September 2026',
+        credentialId: '',
+        url: '',
+        images: [
+            '/img/Serti/Power1.jpg',
+            '/img/Serti/Power2.jpg',
+        ],
+        description: 'Berhasil menyelesaikan Short Class Power BI Dashboard Specialist dengan topik utama Power BI Dashboard Specialist.',
+    },
 ]
