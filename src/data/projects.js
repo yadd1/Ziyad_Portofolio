@@ -94,19 +94,24 @@ The dashboard consists of three main pages:
     {
         id: 'project-3',
         title: {
-            id: 'COMING SOON',
-            en: 'COMING SOON',
+            id: 'Manajemen Data Produk Menggunakan Microsoft Excel',
+            en: 'Product Data Management Using Microsoft Excel',
         },
         summary: {
-            id: 'COMING SOON',
-            en: 'COMING SOON',
+            id: 'Proyek pengelolaan data produk menggunakan Microsoft Excel yang bertujuan untuk mengorganisir, membersihkan, dan menganalisis informasi produk secara lebih terstruktur. Proyek ini menunjukkan penerapan Microsoft Excel untuk mendukung pekerjaan administrasi dan pengelolaan data, mulai dari proses pembersihan data hingga penyusunan laporan.',
+            en: 'An Excel-based product data management project designed to organize, clean, and analyze product information efficiently. This project demonstrates the use of Microsoft Excel for administrative and data management tasks, including data cleaning, product lookup, and reporting.',
         },
         details: {
-            id: 'COMING SOON',
-            en: 'COMING SOON',
+            id: 'Fitur dan Proses Pengerjaan \n\n Data Cleaning: Membersihkan dan merapikan data mentah untuk meningkatkan akurasi serta konsistensi informasi produk.\n\nProduct Lookup: Menggunakan fungsi VLOOKUP dan IFERROR untuk mencari serta menampilkan informasi produk berdasarkan kode produk.\n\nProduct Categorization: Mengelompokkan produk berdasarkan kategori menggunakan data referensi.\n\nData Summarization: Membuat PivotTable untuk merangkum jumlah produk, harga rata-rata, harga tertinggi, dan harga terendah berdasarkan kategori.\n\nData Visualization: Membuat grafik untuk menampilkan distribusi jumlah produk dan perbandingan harga rata-rata antar kategori.',
+            en: 'Key Features \n\n Data Cleaning: Organized and standardized raw product data to improve data accuracy and consistency.\n\nProduct Lookup: Implemented VLOOKUP and IFERROR to retrieve product information based on unique product codes.\n\nProduct Categorization: Used reference data to classify products into their respective categories.\n\nData Summarization: Created PivotTables to summarize product quantities, average prices, minimum prices, and maximum prices by category.\n\nData Visualization: Developed charts to present product distribution and average prices across categories..',
         },
-        tags: ['Excel', 'Data Analysis', 'Business'],
-        thumbnail: '/img/Project/soon.png',
-        links: [],
+        tags: ['Excel', 'Data Management', 'Administrative Reporting'],
+        thumbnail: '/img/Project/Project_Excel.jpg',
+        links: [
+            {
+                label: 'Google Drive',
+                url: 'https://drive.google.com/drive/folders/1_0HpBMPn-mTjy-ZuB_tFqU_QUbjM6Z98?usp=sharing',
+            }
+        ],
     },
 ]
